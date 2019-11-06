@@ -11,8 +11,7 @@ plan batch::run_task (
 
   $reduction = $steps.reduce({'ok-count' => 0, 'error-count' => 0}) |$memo,$i| {
     $start = $i * $batch_size
-    $end   = $i * $batch_size + $batch_size
-    $batch_targets = $targets[$start, $end]
+    $batch_targets = $targets[$start, $batch_size]
 
     $batch_results = run_task($task, $batch_targets, $parameters)
 
